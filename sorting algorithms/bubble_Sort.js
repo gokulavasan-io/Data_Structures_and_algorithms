@@ -1,59 +1,41 @@
 //  11-nov-2024
 
 
-// for numbers and names
+// For loop
+let bubbleSortUsingForLoop = (inputArr) => {
+    let len = inputArr.length;
+    for (let i = 0; i < len; i++) {
+        for (let j = 0; j < len; j++) {
+            if (inputArr[j] > inputArr[j + 1]) {
+                let tmp = inputArr[j];
 
-function selectionSort(arr) {
-    for(let i=0;i<arr.length;i++){
-        let min=i;
-        for(let j=i;j<arr.length;j++){
-                if(arr[j]<arr[min]){
-                    min=j;
-                }
-        }
-        if(min!=i){
-            [arr[i],arr[min]]=[arr[min],arr[i]];
-        }
-    }
-    return arr;
-
-
-}
-
-let arr=[67,5,23,98,12,2];
-let nameArr= ["Sophia", "James", "Liam", "Isabella", "Ethan", "Ava", "Mason", "Mia", "Lucas", "Charlotte"];
-
-console.log(selectionSort([67,4,34,2,98,56,33]));
-console.log(selectionSort(nameArr));
-
-
-
-
-// for object
-
-function objectSelectionSort(arr,which) {
-    for(let i=0;i<arr.length;i++){
-        let min=i;
-        for(let j=i;j<arr.length;j++){
-                if(arr[j][which]<arr[min][which]){
-                    min=j;
-                }
-        }
-        if(min!=i){
-            [arr[i][which],arr[min][which]]=[arr[min][which],arr[i][which]];
+                inputArr[j] = inputArr[j + 1];
+                inputArr[j + 1] = tmp;
+            }
         }
     }
-    return arr;
+    return inputArr;
+};
 
+// Do while loop
 
-}
+let bubbleSortUsingDoWhile = (inputArr) => {
+    let len = inputArr.length;
+    let checked;
+    do {
+        checked = false;
+        for (let i = 0; i < len; i++) {
+            if (inputArr[i] > inputArr[i + 1]) {
+                let tmp = inputArr[i];
+                inputArr[i] = inputArr[i + 1];
+                inputArr[i + 1] = tmp;
+                checked = true;
+            }
+        }
+    } while (checked);
+    return inputArr;
+};
 
-let students = [
-    { name: "Zen", marks: 95 },
-    { name: "Sobi", marks: 62 },
-    { name: "Tave", marks: 10 },
-    { name: "Alice", marks: 78 },
-    { name: "Gavid", marks: 5 }
-];
-
-console.log(objectSelectionSort(students,"marks"));
+let arr=[10, 14, 28, 11, 7, 16, 30, 50, 25, 18];
+console.log(bubbleSortUsingForLoop(arr));
+console.log(bubbleSortUsingDoWhile(arr));
